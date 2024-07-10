@@ -1,0 +1,23 @@
+{
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "Anyel EC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anyel-top/REST-API-NodeJS-Introduce.git"
+  },
+  "author": "Anyel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anyel-top/REST-API-NodeJS-Introduce/issues"
+  },
+  "homepage": "https://github.com/Anyel-top/REST-API-NodeJS-Introduce#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  }
+}
