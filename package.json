@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Anyel-top/REST-API-NodeJS-Introduce#readme",
   "dependencies": {
     "express": "^4.19.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.10.2"
   }
 }
