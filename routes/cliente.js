@@ -2,11 +2,11 @@
 const express = require('express');
 const router = express.Router();
 
-var getConecction = require('../conexion');
+var getConnection = require('../conexion');
 
 
 router.get('/usuario/:cedula', (req, res) => {
-    getConecction(function(error, conn) {
+    getConnection(function(error, conn) {
         if (error) {
             res.sendStatus(400);
             return;
@@ -14,8 +14,8 @@ router.get('/usuario/:cedula', (req, res) => {
         
         const { cedula } = req.params;
         conn.query('SELECT * FROM cliente WHERE cedula = ?', [cedula], function(error, rows) {
-            conn.release();
             if (error) {
+                conn.release();
                 res.status(400).send('No se ha podido obtener los datos');
                 return;
             }
