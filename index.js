@@ -5,14 +5,15 @@ const express = require('express'); // manager data
 const hostname = '127.0.0.1';
 const port = 3000;
 
-// cabecera d elos CORS
-app.use(function (res, nex){
+
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Request-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
   next();
+});
 
-})
 
 /* manager responses 
 const server = http.createServer((req, res) => {
