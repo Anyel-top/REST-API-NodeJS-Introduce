@@ -24,4 +24,17 @@ router.get('/usuario/:cedula', (req, res) => {
     });
 });
 
+router.post('cliente/', (req, res, next)=>{
+    const data = {
+        nombre: req.body.nombre, 
+        cedula: req.body.cedula, 
+        telefono: req.body.telefono,
+        direccion: req.body.direccion,
+        correo: req.body.correo
+    }
+
+    const query = "INSERT INTO cliente (nombre, cedula, telefono, direccion, correo) values 
+
+})
+
 module.exports = router;
