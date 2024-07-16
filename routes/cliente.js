@@ -4,15 +4,17 @@ const router = express.Router();
 
 var getConnection = require('../conexion');
 
-
+// endpoint to getAll client, require path of identification 
 router.get('/usuario/:cedula', (req, res) => {
     getConnection(function(error, conn) {
+        // manager errors
         if (error) {
             res.sendStatus(400);
             return;
         }
         
         const { cedula } = req.params;
+        // query to getAll client
         conn.query('SELECT * FROM cliente WHERE cedula = ?', [cedula], function(error, rows) {
             if (error) {
                 conn.release();
@@ -33,8 +35,8 @@ router.post('cliente/', (req, res, next)=>{
         correo: req.body.correo
     }
 
-    const query = "INSERT INTO cliente (nombre, cedula, telefono, direccion, correo) values 
-
-})
+    const query="Insert into cliente (nombrecliente, cedulacliente, telefonocliente, direccioncliente, correocliente) values (\'"
+    +data.nombrecliente+"\',\'"+data.cedulacliente+"\',\'"+data.telefonocliente+"\',\'"+data.direccioncliente+"\',\'"+data.correocliente+"\')";
+});
 
 module.exports = router;
