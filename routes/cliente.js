@@ -26,7 +26,7 @@ router.get('/usuario/:cedula', (req, res) => {
     });
 });
 
-router.post('cliente/', (req, res, next)=>{
+router.post('/cliente/', (req, res, next)=>{
     const data = {
         nombre: req.body.nombre, 
         cedula: req.body.cedula, 
@@ -35,8 +35,35 @@ router.post('cliente/', (req, res, next)=>{
         correo: req.body.correo
     }
 
-    const query="Insert into cliente (nombrecliente, cedulacliente, telefonocliente, direccioncliente, correocliente) values (\'"
-    +data.nombrecliente+"\',\'"+data.cedulacliente+"\',\'"+data.telefonocliente+"\',\'"+data.direccioncliente+"\',\'"+data.correocliente+"\')";
-});
+    const query="Insert into cliente (nombre, cedula, telefono, direccion, correo) values (\'"
+    +data.nombre+"\',\'"+data.cedula+"\',\'"+data.telefono+"\',\'"+data.direccion+"\',\'"+data.correo+"\')";
+
+    getConnection(function(err, conn) {
+        console.log(err)
+        // manager errors
+        if (err) {
+            res.sendStatus(400, "No se puede conectar a la base de datos ", err);
+            return;
+        }
+        
+        // query to getAll client
+        conn.query(query, function(err, rows) {
+            console.log(query);
+            console.log(err)
+            if (err) {
+            
+                 return res.sendStatus(400, 'No se ha podido obtener los datos', err);
+                 console.log(err);
+            }
+            else{
+                conn.release();
+                res.json({status: 'registro exitsoso '})
+            }
+            });
+            
+        
+    });
+
+});   
 
 module.exports = router;
